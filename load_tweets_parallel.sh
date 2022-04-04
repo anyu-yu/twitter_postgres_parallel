@@ -11,9 +11,9 @@ echo "$files" | time parallel unzip -p | sed 's/\\u0000//g' | psql postgresql://
 echo '================================================================================'
 echo 'load pg_normalized'
 echo '================================================================================'
-echo "$files" | time parallel python3 -u load_tweets.py --db=postgresql://postgres:pass@localhost:2/ --inputs
+echo "$files" | time parallel python3 -u load_tweets.py --db=postgresql://postgres:pass@localhost:1232/ --inputs
 
 echo '================================================================================'
 echo 'load pg_normalized_batch'
 echo '================================================================================'
-echo "$files" | time parallel python3 -u load_tweets_batch.py --db=postgresql://postgres:pass@localhost:3/ --inputs
+echo "$files" | time parallel python3 -u load_tweets_batch.py --db=postgresql://postgres:pass@localhost:1532/ --inputs
