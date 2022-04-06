@@ -6,7 +6,7 @@ echo '==========================================================================
 echo 'load pg_denormalized'
 echo '================================================================================'
 # FIXME: implement this
-echo "$files" | time parallel unzip -p | sed 's/\\u0000//g' | psql postgresql://postgres:pass@localhost:1132/ -c "COPY tweets_jsonb (data) FROM STDIN csv quote e'\x01' delimiter e'\x02';"
+echo "$files" | time parallel sh load_tweets_parallel.sh
 
 echo '================================================================================'
 echo 'load pg_normalized'
